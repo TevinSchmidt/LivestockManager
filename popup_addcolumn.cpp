@@ -48,70 +48,25 @@
 **
 ****************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#include <QtWidgets>
 
-#include <QDialog>
 #include "popup_addcolumn.h"
 
 
-QT_BEGIN_NAMESPACE
-class QAction;
-class QDialogButtonBox;
-class QGroupBox;
-class QLabel;
-class QLineEdit;
-class QMenu;
-class QMenuBar;
-class QPushButton;
-class QTextEdit;
-class QTableWidget;
-QT_END_NAMESPACE
-
-//! [0]
-class MainWindow : public QDialog
+Popup_AddColumn::Popup_AddColumn()
 {
-    Q_OBJECT
+    QHBoxLayout *mainLayout = new QHBoxLayout;
 
-public:
-    MainWindow();
+    setLayout(mainLayout);
+    setWindowTitle(tr("Basic Layouts"));
+}
 
-private:
-    void createMenu();
-    void createQuickMenuGroupBox();
-    void createTableGroupBox();
+void Popup_AddColumn::createWindow()
+{
 
+}
 
-    enum { NumGridRows = 3, NumButtons = 4 };
+void Popup_AddColumn::createForm()
+{
 
-    //Frames and layers
-    QGroupBox *verticalGroupBox;
-    QGroupBox *gridGroupBox;
-
-    //Table items
-    QTableWidget *tableView;
-
-    //Quick menu items
-    QDialogButtonBox *buttonBox;
-
-    //Buttons
-    QPushButton *newRowButton;
-    QPushButton *newColButton;
-    QPushButton *delCol;
-    QPushButton *delSelectedRow;
-
-    //Menu items
-    QMenuBar *menuBar;
-    QMenu *fileMenu;
-    QAction *exitAction;
-
-private slots:
-    void on_newRowButton_clicked();
-    void on_newColButton_clicked();
-    void on_delSelectedRow_clicked();
-    void on_delCol_clicked();
-
-};
-//! [0]
-
-#endif // MAINWINDOW_H
+}

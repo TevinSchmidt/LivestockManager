@@ -24,10 +24,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    popup_addcolumn.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    popup_addcolumn.h
 
 FORMS +=
 

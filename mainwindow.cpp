@@ -51,6 +51,7 @@
 #include <QtWidgets>
 
 #include "mainwindow.h"
+#include "Popup_AddColumn.h"
 
 MainWindow::MainWindow()
 {
@@ -132,8 +133,15 @@ void MainWindow::on_newRowButton_clicked()
 void MainWindow::on_newColButton_clicked()
 {
     int index = tableView->columnCount();
-    tableView->insertColumn(index);
-    tableView->setHorizontalHeaderItem(index, new QTableWidgetItem(tr("TEST")));
+
+    Popup_AddColumn *columnDialog = new Popup_AddColumn();
+
+    columnDialog->show();
+    columnDialog->raise();
+    columnDialog->activateWindow();
+
+    //tableView->insertColumn(index);
+    //tableView->setHorizontalHeaderItem(index, new QTableWidgetItem(tr("TEST")));
 }
 
 void MainWindow::on_delSelectedRow_clicked()
