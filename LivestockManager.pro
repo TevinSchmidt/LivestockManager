@@ -25,11 +25,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    popup_addcolumn.cpp
+    popup_addcolumn.cpp \
+    logger.cpp
 
 HEADERS += \
         mainwindow.h \
-    popup_addcolumn.h
+    popup_addcolumn.h \
+    logger.h
 
 FORMS +=
 

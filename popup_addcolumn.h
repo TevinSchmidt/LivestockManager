@@ -2,6 +2,7 @@
 #define POPUP_ADDCOLUMN_H
 
 #include <QDialog>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 class QGroupBox;
@@ -13,12 +14,30 @@ class Popup_AddColumn : public QDialog
 
 public:
     Popup_AddColumn();
+    ~Popup_AddColumn();
 
 private:
     void createWindow();
     void createForm();
+    void createBottomOptions();
+    void closeEvent(QCloseEvent *event);
 
+    //Frames and layers
     QGroupBox *mainWindow;
+    QGroupBox *verticalGroupBox;
+    QGroupBox *formBox;
+    QGroupBox *bottomOptionsBox;
+
+    //Buttons
+    QPushButton *acceptButton;
+    QPushButton *cancelButton;
+
+    //Text feilds
+    QLineEdit *columnName;
+
+private slots:
+    void on_acceptButton_clicked();
+    void on_cancelButton_clicked();
 
 };
 

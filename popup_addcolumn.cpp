@@ -57,16 +57,79 @@ Popup_AddColumn::Popup_AddColumn()
 {
     QHBoxLayout *mainLayout = new QHBoxLayout;
 
+    mainLayout->addWidget(verticalGroupBox);
+
     setLayout(mainLayout);
-    setWindowTitle(tr("Basic Layouts"));
+    setWindowTitle(tr("Create New Column"));
+}
+
+Popup_AddColumn::~Popup_AddColumn()
+{
+    delete mainWindow;
+    delete verticalGroupBox;
+    delete formBox;
+    delete bottomOptionsBox;
+
+    delete acceptButton;
+    delete cancelButton;
+
+    delete columnName;
+}
+
+void Popup_AddColumn::closeEvent(QCloseEvent *event)
+{
+    event->accept();
 }
 
 void Popup_AddColumn::createWindow()
 {
+    verticalGroupBox = new QGroupBox();
+    QVBoxLayout *layout = new QVBoxLayout;
+
+    createForm();
+    createBottomOptions();
+
+    layout->addWidget(formBox);
+    layout->addWidget(bottomOptionsBox);
 
 }
 
 void Popup_AddColumn::createForm()
+{
+    formBox = new QGroupBox();
+    QGridLayout *layout = new QGridLayout;
+
+    columnName = new QLineEdit();
+
+    layout->addWidget(columnName);
+
+    formBox->setLayout(layout);
+}
+
+void Popup_AddColumn::createBottomOptions()
+{
+    bottomOptionsBox = new QGroupBox();
+    QHBoxLayout *layout = new QHBoxLayout;
+
+    //Initialize buttons
+    acceptButton = new QPushButton(tr("Accept"), this);
+    connect(acceptButton, SIGNAL (pressed()), this, SLOT (on_acceptButton_clicked()));
+    cancelButton = new QPushButton(tr("Cancel"), this);
+    connect(cancelButton, SIGNAL (pressed()), this, SLOT (on_cancelButton_clicked()));
+
+    //Add buttons to layout
+    layout->addWidget(acceptButton);
+    layout->addWidget(cancelButton);
+
+    bottomOptionsBox->setLayout(layout);
+}
+
+void Popup_AddColumn::on_acceptButton_clicked()
+{
+
+}
+
+void Popup_AddColumn::on_cancelButton_clicked()
 {
 
 }
